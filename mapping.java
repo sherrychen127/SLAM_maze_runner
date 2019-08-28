@@ -1,7 +1,6 @@
 
 
 import java.util.ArrayList;
-//import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,8 +52,6 @@ public class mapping {
 		
 		initializeMap(); // Initialize map with no walls
 		
-		
-		
 		float prev_sonic_reading = sonicSample[0]*100 - 3;
 		float prev_gyro_reading = tiltSample[0];
 		
@@ -73,33 +70,6 @@ public class mapping {
 			
 			float curr_sonic_reading = sonicSample[0]*100;
 			float curr_gyro_reading = tiltSample[0];
-			
-			/*
-			if (curr_sonic_reading <=12.5){
-				System.out.println("left_turn");
-				left_turn(tilt);
-				System.out.println("going forward");
-				
-			}
-			if (curr_sonic_reading <=12.5){
-				System.out.println("left_turn_2");
-				right_turn(tilt);
-			}
-			
-			stop();
-			
-			forward(color,sonic);
-*/
-			//System.out.println(Math.abs(curr_sonic_reading - prev_sonic_reading));
-			//determine next step
-			
-			
-			
-
-			//left_turn();
-			
-
-			
 			
 			if (Math.abs(Math.abs(curr_gyro_reading - prev_gyro_reading) - 90)<= 5){
 				int heading = 1;
@@ -145,13 +115,6 @@ public class mapping {
 			if (curPos == prevPos && curHead == prevHead){
 				forward(color,sonic);
 			}
-			
-			
-
-
-
-
-
 			
 		}
 
@@ -361,10 +324,6 @@ public class mapping {
 			Motor.C.backward();
 		}
 		stop();
-		//Motor.B.setSpeed(90);
-		//Motor.C.setSpeed(90);
-		//Motor.B.rotate(220,true);
-		//Motor.C.rotate(-220);
 		return;
 	}
 	
@@ -388,15 +347,6 @@ public class mapping {
 			if (Button.ENTER.isDown()){
 				break;
 			}
-			
-			//if(Math.abs(curr_sonic_reading % 30 -13) < 3){
-			//	k_p = 0;
-			//}
-			
-			
-			//else{
-			//	k_p = 50;
-			//}
 			
 			k_p = 50;
 			if (curr_sonic_reading < 2){
@@ -535,13 +485,8 @@ public class mapping {
 			
 			color_port.getRedMode().fetchSample(redsample, 0);
 			double z = (redsample[0] - 0.1)*2.5; 
-			return z;
-			//System.out.println((redsample[0])-0.03*10); //midpoint 0.45
-			//float[] reading = new float[sampleSize];
-			//reading = (redsample - 0.03) * 10;
-					
+			return z;				
 		}
-	
 	
 	public static void updateMap(char curPos, char curHead){ 
 		/***
